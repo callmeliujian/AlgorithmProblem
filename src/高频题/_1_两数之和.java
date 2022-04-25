@@ -14,4 +14,10 @@ public class _1_两数之和 {
         }
         return null;
     }
+
+    public static void main(String[] args) {
+        HashMap<Character,Integer> map = new HashMap<>();
+        //map.con
+        int vale = map.get('k');
+    }
 }
