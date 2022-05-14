@@ -8,6 +8,7 @@ public class BruteForce {
     // str2 匹配串
     // beginIndex 开始匹配的位置
     // 匹配成功返回字符串的起始位置，匹配失败返回 -1
+    // 时间复杂度 n*m
     public int bf(String str1, String str2, int beginIndex) {
         if (str1 == null || str2 == null) return -1;
         if (str1.length() == 0 || str2.length() == 0) return -1;
