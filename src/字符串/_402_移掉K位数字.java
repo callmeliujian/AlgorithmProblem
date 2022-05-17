@@ -71,7 +71,7 @@ public class _402_移掉K位数字 {
             }
             deque.offerLast(digit);
         }
-
+        // 输入数字为 1234567 k=3 需要输出 123 如果没有这行代码输出 1234567
         for (int i = 0; i < k; ++i) {
             deque.pollLast();
         }
