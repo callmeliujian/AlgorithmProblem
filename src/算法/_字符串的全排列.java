@@ -40,6 +40,7 @@ public class _字符串的全排列 {
         }
         boolean[] visit = new boolean[26];
         for (int j = index; j < str.length; j++) {
+            // 分支限界法
             if (!visit[str[j] - 'a']) {
                 visit[str[j] - 'a'] = true;
                 swap(str,index,j);
