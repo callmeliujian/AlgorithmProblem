@@ -23,6 +23,7 @@ public class _91_解码方法 {
             if (index + 1 < str.length) {
                 res += process(str, index + 2); // (i 和 i + 1) 作为单独的部分，后续有多少种方法
             }
+            return res;
         }
         if (str[index] == '2') {
             int res = process(str, index + 1); // // i 自己作为单独的部分，后续有多少种方法。
