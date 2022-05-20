@@ -1,4 +1,4 @@
-package 算法;
+package 动态规划;
 
 // 给定两个长队都为N的数组 weights 和 values， weights[i] 和 values[i] 分别代表 i 号物品的重量和价值。给定一个正数 bag，
 // 表示一个载重 bag 的袋子，
