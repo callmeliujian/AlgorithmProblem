@@ -40,21 +40,41 @@ public class _背包问题 {
             return 0;
         }
         int p1 = process2(w, v, index + 1, rest);
-        int p2Next = process2(w, v, index, rest - w[index]);
-        int p2 = -1;
+        int p2 = 0;
+        int p2Next = process2(w, v, index + 1, rest - w[index]);
         if (p2Next != -1) {
             p2 = v[index] + p2Next;
         }
         return Math.max(p1, p2);
     }
 
+    public int dpWay(int[] w, int[] v, int bag) {
+        int N = w.length;
+        int[][] dp = new int[N + 1][bag + 1];
+        for (int index = N - 1; index >= 0; index --) {
+            for (int rest = bag; rest >= 0; rest --) {
+                int p1 = dp[index + 1][rest];
+                int p2 = -1;
+                int temp = rest - w[index];
+                if (temp >= 0) {
+                    p2 = v[index] + dp[index + 1][temp];
+                }
+                dp[index][rest] = Math.max(p1,p2);
+            }
+        }
+        return dp[0][bag];
+    }
+
+
     public static void main(String[] args) {
         _背包问题 a = new _背包问题();
-        int[] weights = { 3, 2, 4, 7, 3, 1, 7 };
-		int[] values = { 5, 6, 3, 19, 12, 4, 2 };
-		int bag = 15;
+        int[] weights = { 3, 2, 4, 7 };
+		int[] values = { 5, 6, 3, 19};
+		int bag = 11;
         int res = a.process2(weights, values, 0, bag);
+        int res1 = a.dpWay(weights,values,bag);
         System.out.println(res);
+        System.out.println(res1);
     }
     
 }
