@@ -63,9 +63,9 @@ public class _691_贴纸拼词 {
         }
         // map -> rest_map
         for (int i = 0; i < n; i ++) {
-//            if (map[i][target[0] - 'a'] == 0 ) {
-//                continue;
-//            }
+            if (map[i][target[0] - 'a'] == 0 ) {
+                continue;
+            }
             StringBuilder sb = new StringBuilder();
             // i 贴纸，j 枚举 a～z字符
             for (int j = 0; j < 26; j++) {
