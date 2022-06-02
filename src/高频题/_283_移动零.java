@@ -22,14 +22,16 @@ package 高频题;
 public class _283_移动零 {
 
     public void moveZeroes(int[] nums) {
-        if (nums == null) return;;
-        for (int i = 0, cur = 0; i < nums.length; i++) {
+        if (nums == null || nums.length == 0 || nums.length == 1) return;
+        int current = 0;
+        for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) continue;
-            if (cur != i) {
-                nums[cur] = nums[i];
+            // 不加这个当数组不存在的时候就会有问题
+            if (current != i) {
+                nums[current] = nums[i];
                 nums[i] = 0;
             }
-            cur++;
+            current++;
         }
     }
 
