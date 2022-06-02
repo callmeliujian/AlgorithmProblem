@@ -1,4 +1,4 @@
-package Array;
+package DoublePointer;
 
 // 双指针
 public class _27_移除元素 {
