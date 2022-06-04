@@ -1,4 +1,4 @@
-package 滑动窗口;
+package sliding_window;
 
 public class _209_长度最小的子数组 {
 

@@ -1,6 +1,4 @@
-package 滑动窗口;
-
-import java.util.HashMap;
+package sliding_window;
 
 public class _643_子数组最大平均数_I {
     public double findMaxAverage(int[] nums, int k) {

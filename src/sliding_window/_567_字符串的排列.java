@@ -1,4 +1,4 @@
-package 滑动窗口;
+package sliding_window;
 
 //给你两个字符串 s1 和 s2 ，写一个函数来判断 s2 是否包含 s1 的排列。如果是，返回 true ；否则，返回 false 。
 //
@@ -21,7 +21,6 @@ package 滑动窗口;
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 import java.util.HashMap;
-import java.util.List;
 
 public class _567_字符串的排列 {
 
