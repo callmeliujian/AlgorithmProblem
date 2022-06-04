@@ -1,8 +1,6 @@
-package 链表;
+package Linked_List;
 
 // 对于一个给定的链表，返回环的入口节点，如果没有环，返回null
-
-import java.util.List;
 
 /**
  * 题目描述: 链表的入环节点&#xff0c;如果无环&#xff0c;返回null

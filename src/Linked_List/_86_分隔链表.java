@@ -1,4 +1,4 @@
-package 链表;
+package Linked_List;
 
 //https://leetcode-cn.com/problems/partition-list/
 
