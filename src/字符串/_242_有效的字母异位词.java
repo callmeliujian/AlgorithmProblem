@@ -20,6 +20,24 @@ package 字符串;
 
 public class _242_有效的字母异位词 {
 
+    public static boolean isAnagram1(String s, String t) {
+        if (s == null || t == null) return false;
+        char[] sCharArray = s.toCharArray();
+        char[] tCharArray = t.toCharArray();
+        int [] charFreq = new int[26];
+        if (sCharArray.length != tCharArray.length) return false;
+        for (int i = 0; i < sCharArray.length; i++) {
+            charFreq[sCharArray[i]-'a']++;
+        }
+        for (int i = 0; i < tCharArray.length; i++) {
+            int temp = --charFreq[tCharArray[i]-'a'];
+            if (temp < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean isAnagram(String s, String t) {
         if (s == null || t == null)
             return false;
@@ -37,6 +55,11 @@ public class _242_有效的字母异位词 {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        boolean ans = isAnagram1("rat", "car");
+        System.out.println(ans);
     }
 
 }
