@@ -1,7 +1,5 @@
 package 栈;
 
-import 字符串._402_移掉K位数字;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 

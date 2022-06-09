@@ -1,6 +1,4 @@
-package 字符串;
-
-import 算法.BruteForce;
+package String;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -95,6 +93,7 @@ public class _402_移掉K位数字 {
         _402_移掉K位数字 b = new _402_移掉K位数字();
         String index = b.removeKdigits(str1,str2);
         System.out.print(index);
+        System.out.println("123");
     }
 
 

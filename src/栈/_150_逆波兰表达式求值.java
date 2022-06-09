@@ -55,8 +55,6 @@ package 栈;
 //        链接：https://leetcode.cn/problems/evaluate-reverse-polish-notation
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-import 字符串._402_移掉K位数字;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 

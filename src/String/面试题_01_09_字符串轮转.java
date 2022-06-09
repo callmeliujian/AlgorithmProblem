@@ -1,4 +1,4 @@
-package 字符串;
+package String;
 
 // https://leetcode-cn.com/problems/string-rotation-lcci/
 
