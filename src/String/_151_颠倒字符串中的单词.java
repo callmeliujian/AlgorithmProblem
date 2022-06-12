@@ -2,6 +2,61 @@ package String;
 
 public class _151_颠倒字符串中的单词 {
 
+    public String reverseWords1(String s) {
+        // 1. 去除字符串首部，尾部，中间多余的空格
+        StringBuilder sb = removeSpace(s);
+        // 2. 翻转整个字符串
+        reverseString(sb,0,sb.length() - 1);
+        // 3. 翻转单个字符
+        reverseEachWord(sb);
+        return sb.toString();
+    }
+
+    private StringBuilder removeSpace(String s) {
+        int start = 0;
+        int end = s.length() - 1;
+        while (s.charAt(start) == ' ') start++;
+        while (s.charAt(end) == ' ') end--;
+        StringBuilder sb = new StringBuilder();
+        while (start <= end) {
+            char c = s.charAt(start);
+            // 当前字符不是空格，或者当前字符是空格，但是前一个字符不是空格
+            if (c != ' ' || sb.charAt(sb.length() - 1) != ' ') {
+                sb.append(c);
+            }
+            start++;
+        }
+        return sb;
+    }
+
+    private void reverseEachWord(StringBuilder sb) {
+        int start = 0;
+        int end = 1;
+        int n = sb.length();
+        while (start < n) {
+            while (end < n && sb.charAt(end) != ' ') {
+                end++;
+            }
+            reverseString(sb,start,end - 1);
+            start = end + 1;
+            end = start + 1;
+        }
+    }
+
+    /**
+     * 反转字符串指定区间[start, end]的字符
+     */
+    private void reverseString(StringBuilder sb, int start, int end) {
+        while (start < end) {
+            char temp = sb.charAt(start);
+            sb.setCharAt(start, sb.charAt(end));
+            sb.setCharAt(end,temp);
+            start++;
+            end--;
+        }
+    }
+
+
     public String reverseWords(String s) {
         if (s == null)
             return "";
