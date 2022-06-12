@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Stack;
 
-public class _232_用栈实现队列 {
-
-}
-
 class MyQueue {
 
     Stack<Integer> stackIn;
