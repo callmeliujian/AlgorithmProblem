@@ -2,6 +2,9 @@ package BinaryTree;
 
 import common.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class _101_对称二叉树 {
 
     public boolean isSymmetric(TreeNode root) {
