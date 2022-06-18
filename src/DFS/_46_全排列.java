@@ -1,5 +1,7 @@
 package DFS;
 
+import java.util.*;
+
 //给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
 //
 //         
@@ -21,10 +23,36 @@ package DFS;
 //        链接：https://leetcode-cn.com/problems/permutations
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class _46_全排列 {
+
+    // 回溯解法，用这个！ 20220618
+    List<List<Integer>> ans = new ArrayList<>();
+    LinkedList<Integer> item = new LinkedList<>();
+
+    public List<List<Integer>> permute1(int[] nums) {
+        boolean[] flags = new boolean[nums.length];
+        permuteHelper(nums, flags);
+        return ans;
+    }
+
+    private void permuteHelper(int[] nums, boolean[] flags) {
+        if (item.size() == nums.length) {
+            ans.add(new ArrayList<>(item));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (flags[i]) {
+                continue;
+            }
+            item.add(nums[i]);
+            flags[i] = true;
+            permuteHelper(nums,flags);
+            item.removeLast();
+            flags[i] = false;
+        }
+    }
+
+
 
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null) return null;
