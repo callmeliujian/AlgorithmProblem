@@ -1,6 +1,8 @@
 package 动态规划._01背包;
 
 public class _0_1_背包问题 {
+    // 题解：https://programmercarl.com/背包理论基础01背包-1.html
+    // 题解：https://programmercarl.com/背包理论基础01背包-2.html
     public static void main(String[] args) {
         // 每个物品重量
         int[] weight = {1, 3, 4};
