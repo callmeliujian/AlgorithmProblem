@@ -22,7 +22,7 @@ package 动态规划._01背包;
 
 
 public class _474_一和零 {
-
+//  题解：https://programmercarl.com/0474.一和零.html#_474-一和零
     public int findMaxForm(String[] strs, int m, int n) {
         // dp[i][j]：最多有i个0和j个1的strs的最大子集的大小为dp[i][j]。
         // 滚动数组优化
