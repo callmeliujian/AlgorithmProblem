@@ -1,4 +1,4 @@
-package 动态规划;
+package 动态规划.编辑距离类型;
 
 //给定两个单词 word1 和 word2 ，返回使得 word1 和  word2 相同所需的最小步数。
 //
