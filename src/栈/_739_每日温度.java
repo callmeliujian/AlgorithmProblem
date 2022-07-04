@@ -34,17 +34,19 @@ import java.util.concurrent.DelayQueue;
 public class _739_每日温度 {
 
     public int[] dailyTemperatures(int[] temperatures) {
-        int[] res = new int[temperatures.length];
         Deque<Integer> stack = new ArrayDeque<>();
+        int[] ans = new int[temperatures.length];
         for (int i = 0; i < temperatures.length; i++) {
-            int currentTem = temperatures[i];
-            while (!stack.isEmpty() && currentTem > temperatures[stack.peekLast()]) {
-                int pre = stack.removeLast();
-                res[pre] = i - pre;
+            if (stack.isEmpty() || temperatures[stack.peekLast()] <= temperatures[i]) {
+                while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peekLast()]) {
+                    int temp = stack.removeLast();
+                    int value = i - temp;
+                    ans[temp] = value;
+                }
             }
             stack.addLast(i);
         }
-        return res;
+        return ans;
     }
 
 }
