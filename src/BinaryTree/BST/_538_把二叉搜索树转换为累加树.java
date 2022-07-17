@@ -45,43 +45,46 @@ import common.TreeNode;
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 public class _538_把二叉搜索树转换为累加树 {
-}
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
- class Solution1 {
-    // https://labuladong.github.io/algo/2/20/41/
-    int sum = 0;
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     *     int val;
+     *     TreeNode left;
+     *     TreeNode right;
+     *     TreeNode() {}
+     *     TreeNode(int val) { this.val = val; }
+     *     TreeNode(int val, TreeNode left, TreeNode right) {
+     *         this.val = val;
+     *         this.left = left;
+     *         this.right = right;
+     *     }
+     * }
+     */
+    class Solution1 {
+        // https://labuladong.github.io/algo/2/20/41/
+        // 与 _1038_从二叉搜索树到更大和树 相同
+        int sum = 0;
 
-    public TreeNode convertBST(TreeNode root) {
-        traverse(root);
-        return root;
+        public TreeNode convertBST(TreeNode root) {
+            traverse(root);
+            return root;
+        }
+
+        private void traverse(TreeNode node) {
+            if (node == null) return;
+            // BST
+            // traverse(node.right);
+            // 操作
+            // traverse(node.left);
+            // 倒叙输出
+            traverse(node.right);
+            sum += node.val;
+            node.val = sum;
+            traverse(node.left);
+        }
+
     }
 
-    private void traverse(TreeNode node) {
-        if (node == null) return;
-        // BST
-        // traverse(node.right);
-        // 操作
-        // traverse(node.left);
-        // 倒叙输出
-        traverse(node.right);
-        sum += node.val;
-        node.val = sum;
-        traverse(node.left);
-    }
-
 }
+
