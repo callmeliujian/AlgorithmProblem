@@ -74,4 +74,12 @@ public class _1650_二叉树的最近公共祖先_III {
         }
     }
 
+    public static void main(String[] args) {
+        for (int i = 0; i < 3; i++) {
+            int trow = ((i + 1) / 3) % 3;
+            System.out.println(trow);
+        }
+
+    }
+
 }
