@@ -1,4 +1,4 @@
-package 树;
+package BinaryTree.公共祖先;
 import common.TreeNode;
 
 public class _236_二叉树的最近公共祖先 {
