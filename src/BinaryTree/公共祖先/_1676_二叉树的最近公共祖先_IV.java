@@ -50,7 +50,7 @@ public class _1676_二叉树的最近公共祖先_IV {
      * }
      */
     class Solution {
-        // https://labuladong.github.io/algo/2/21/47/
+        // https://mp.weixin.qq.com/s/njl6nuid0aalZdH5tuDpqQ?forceh5=1
         public TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
             HashSet<TreeNode> nodeSet = new HashSet<>();
             for (TreeNode node : nodes) {
