@@ -1,4 +1,4 @@
-package BinaryTree.公共祖先;
+package BinaryTree;
 import common.TreeNode;
 import java.util.*;
 
