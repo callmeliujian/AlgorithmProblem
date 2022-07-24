@@ -41,6 +41,7 @@ package Array;
 public class _1184_公交站间的距离 {
 
     class Solution {
+        // https://leetcode.cn/problems/distance-between-bus-stops/solution/by-ac_oier-fow3/
         public int distanceBetweenBusStops(int[] distance, int start, int destination) {
             int length = distance.length;
             int a = 0, b = 0;
