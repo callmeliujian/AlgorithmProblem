@@ -64,4 +64,103 @@ public class _112_路径总和 {
         return false;
     }
 
+
+    class Solution {
+
+        boolean ans = false;
+
+        public boolean hasPathSum(TreeNode root, int targetSum) {
+            if (root == null) return false;
+            findPath(root, targetSum, 0);
+            return ans;
+        }
+        // 递归函数无返回值版本
+        private void findPath(TreeNode node, int targetSum, int currentSum) {
+            currentSum += node.val;
+            if (currentSum == targetSum & node.left == null && node.right == null) {
+                ans = true;
+                return;
+            }
+            if (node.left != null) {
+                findPath(node.left, targetSum, currentSum);
+            }
+            if (node.right != null) {
+                findPath(node.right, targetSum, currentSum);
+            }
+            currentSum -= node.val;
+        }
+
+    }
+
+    class Solution1 {
+        // 有返回值 加法版本
+        public boolean hasPathSum(TreeNode root, int targetSum) {
+            if (root == null) return false;
+            return findPath(root, targetSum, root.val);
+        }
+
+        private boolean findPath(TreeNode node, int targetSum, int currentSum) {
+            if (currentSum == targetSum && node.left == null && node.right == null) {
+                return true;
+            }
+            if (node.left == null && node.right == null) {
+                return false;
+            }
+            if (node.left != null) {
+                currentSum += node.left.val;
+                boolean res = findPath(node.left, targetSum, currentSum);
+                currentSum -= node.left.val;
+                if (res) {
+                    return true;
+                }
+            }
+            if (node.right != null) {
+                currentSum += node.right.val;
+                boolean res = findPath(node.right, targetSum, currentSum);
+                currentSum -= node.right.val;
+                if (res) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
+
+    class Solution2 {
+        // 有返回值版本 减法版本
+        public boolean hasPathSum(TreeNode root, int targetSum) {
+            if (root == null) return false;
+            return findPath(root, targetSum, targetSum - root.val);
+        }
+
+        private boolean findPath(TreeNode node, int targetSum, int currentSum) {
+            if (currentSum == 0 && node.left == null && node.right == null) {
+                return true;
+            }
+            if (node.left == null && node.right == null) {
+                return false;
+            }
+            if (node.left != null) {
+                currentSum -= node.left.val;
+                boolean res = findPath(node.left, targetSum, currentSum);
+                currentSum += node.left.val;
+                if (res) {
+                    return true;
+                }
+            }
+            if (node.right != null) {
+                currentSum -= node.right.val;
+                boolean res = findPath(node.right, targetSum, currentSum);
+                currentSum += node.right.val;
+                if (res) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
+
+
 }
