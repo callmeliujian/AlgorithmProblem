@@ -21,6 +21,28 @@ package 高频题;
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 public class _42_接雨水 {
+
+    class Solution3 {
+        // https://labuladong.github.io/algo/4/33/129/
+        public int maxArea(int[] height) {
+            int length = height.length;
+            int ans = Integer.MIN_VALUE;
+            int l = 0, r = length - 1;
+            while (l < r) {
+                int lValue = height[l], rValue = height[r];
+                int h = Math.min(lValue, rValue);
+                ans = Math.max(ans,(r - l) * h);
+                if (lValue > rValue) {
+                    r--;
+                } else {
+                    l++;
+                }
+            }
+            return ans;
+        }
+    }
+
+
     class Solution2 {
         // 双指针解法
         // 时间O(n),空间O(1)
