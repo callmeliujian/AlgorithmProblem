@@ -28,7 +28,6 @@ public class _剑指_Offer_33_二叉搜索树的后序遍历序列 {
     // https://leetcode.cn/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/solution/mian-shi-ti-33-er-cha-sou-suo-shu-de-hou-xu-bian-6/
     // 遍历后序遍历的 [i, j][i,j] 区间元素，寻找 第一个大于根节点 的节点，索引记为 mm 。此时，可划分出左子树区间 [i,m-1][i,m−1] 、右子树区间 [m, j - 1][m,j−1] 、根节点索引 jj 。
     //时间复杂度 O(N^2)   空间复杂度 O(N)
-        )
     //class Solution {
         public boolean verifyPostorder(int[] postorder) {
             return recur(postorder, 0 , postorder.length - 1);
