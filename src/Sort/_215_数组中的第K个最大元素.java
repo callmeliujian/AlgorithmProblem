@@ -1,5 +1,4 @@
 package Sort;
-
 import java.util.*;
 
 //给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
@@ -19,6 +18,47 @@ import java.util.*;
 
 public class _215_数组中的第K个最大元素 {
 
+    // 最小堆解法
+    // https://leetcode.cn/problems/kth-largest-element-in-an-array/solution/partitionfen-er-zhi-zhi-you-xian-dui-lie-java-dai-/
+    class Solution {
+        public int findKthLargest(int[] nums, int k) {
+            int length = nums.length;
+            if (k > length) return 0;
+            PriorityQueue<Integer> queue = new PriorityQueue<>();
+            for (int i = 0; i < k; i++) {
+                queue.offer(nums[i]);
+            }
+            for (int i = k; i < length; i++) {
+                if (nums[i] > queue.peek()) {
+                    queue.remove();
+                    queue.offer(nums[i]);
+                }
+            }
+            return queue.poll();
+        }
+        // 这个函数优化了下最小堆的解法
+        // 从 2 个 for 循环改成一个 for 循环，但是思路不是很清晰
+        public int findKthLargest1(int[] nums, int k) {
+            int length = nums.length;
+            if (k > length) return 0;
+            PriorityQueue<Integer> queue = new PriorityQueue<>();
+            for (int i = 0; i < length; i++) {
+                if (queue.size() < k) {
+                    queue.offer(nums[i]);
+                } else {
+                    if (nums[i] > queue.peek()) {
+                        queue.remove();
+                        queue.offer(nums[i]);
+                    }
+                }
+            }
+            return queue.peek();
+        }
+
+    }
+
+    // 快排
+    // https://leetcode.cn/problems/kth-largest-element-in-an-array/solution/partitionfen-er-zhi-zhi-you-xian-dui-lie-java-dai-/
     Random random = new Random(System.currentTimeMillis());
 
     public int findKthLargest(int[] nums, int k) {
