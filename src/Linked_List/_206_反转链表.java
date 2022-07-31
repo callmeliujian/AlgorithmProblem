@@ -13,4 +13,22 @@ public class _206_反转链表 {
         }
         return pre;
     }
+
+    // 递归解法
+    // https://labuladong.github.io/algo/2/19/19/
+    class Solution {
+        public ListNode reverseList(ListNode head) {
+            return reverse(head);
+        }
+
+        private ListNode reverse(ListNode head) {
+            if (head == null || head.next == null) return head;
+            ListNode last = reverse(head.next);
+            head.next.next = head;
+            head.next = null;
+            return last;
+        }
+
+    }
+
 }
