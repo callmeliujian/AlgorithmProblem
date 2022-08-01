@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 public class _21_合并两个有序链表 {
 

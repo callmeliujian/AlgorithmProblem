@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 //public static void main(String args[]) {
 //        _707_设计链表 a = new _707_设计链表();

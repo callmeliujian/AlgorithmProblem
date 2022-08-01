@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 public class _2_两数相加 {
 
