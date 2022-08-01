@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 public class _19_删除链表的倒数第N个结点 {
 

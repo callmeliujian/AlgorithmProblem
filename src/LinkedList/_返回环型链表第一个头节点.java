@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 // 对于一个给定的链表，返回环的入口节点，如果没有环，返回null
 

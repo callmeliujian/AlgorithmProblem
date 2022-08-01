@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 public class _141_环形链表 {
 

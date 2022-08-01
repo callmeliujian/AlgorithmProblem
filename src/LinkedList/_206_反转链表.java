@@ -1,4 +1,4 @@
-package Linked_List;
+package LinkedList;
 
 public class _206_反转链表 {
     public ListNode reverseList(ListNode head) {

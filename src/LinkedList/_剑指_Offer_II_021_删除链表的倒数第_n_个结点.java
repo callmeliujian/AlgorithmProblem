@@ -1,10 +1,11 @@
-package Linked_List;
+package LinkedList;
 
-//给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
+//给定一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
 //
 //         
 //
 //        示例 1：
+//
 //
 //
 //        输入：head = [1,2,3,4,5], n = 2
@@ -19,10 +20,10 @@ package Linked_List;
 //        输出：[1]
 //
 //        来源：力扣（LeetCode）
-//        链接：https://leetcode.cn/problems/remove-nth-node-from-end-of-list
+//        链接：https://leetcode.cn/problems/SLwz0R
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-public class _19_删除链表的倒数第_N_个结点 {
+public class _剑指_Offer_II_021_删除链表的倒数第_n_个结点 {
 
     /**
      * Definition for singly-linked list.
