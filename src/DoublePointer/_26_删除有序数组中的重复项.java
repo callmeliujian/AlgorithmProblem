@@ -42,17 +42,32 @@ package DoublePointer;
 
 public class _26_删除有序数组中的重复项 {
 
-    public int removeDuplicates(int[] nums) {
-        int length = nums.length;
-        int fast = 1, slow = 1;
-        while (fast < length) {
-            if (nums[fast] != nums[fast - 1]) {
-                nums[slow] = nums[fast];
-                slow++;
+    class Solution {
+        public int removeDuplicates(int[] nums) {
+            int slowIndex = 0, fastIndex = 0;
+            for (; fastIndex < nums.length; fastIndex++) {
+                if (nums[slowIndex] != nums[fastIndex]) {
+                    slowIndex++;
+                    nums[slowIndex] = nums[fastIndex];
+                }
             }
-            fast++;
+            return ++slowIndex;
         }
-        return slow;
     }
+
+
+
+//    public int removeDuplicates(int[] nums) {
+//        int length = nums.length;
+//        int fast = 1, slow = 1;
+//        while (fast < length) {
+//            if (nums[fast] != nums[fast - 1]) {
+//                nums[slow] = nums[fast];
+//                slow++;
+//            }
+//            fast++;
+//        }
+//        return slow;
+//    }
 
 }

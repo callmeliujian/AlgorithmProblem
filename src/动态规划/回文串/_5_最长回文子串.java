@@ -20,6 +20,7 @@ package 动态规划.回文串;
 
 public class _5_最长回文子串 {
 
+    // 动态规划
     public String longestPalindrome(String s) {
         if (s == null)
             return null;
@@ -45,6 +46,31 @@ public class _5_最长回文子串 {
             }
         }
         return new String(cs, begin, maxLen);
+    }
+
+    // 双指针
+    // https://labuladong.github.io/algo/2/20/23/
+    class Solution {
+        public String longestPalindrome(String s) {
+            String ans = "";
+            char[] charArray = s.toCharArray();
+            for (int i = 0; i < charArray.length; i++) {
+                String res = palindrome(s, i, i);
+                String res1 = palindrome(s, i, i+1);
+                ans = res.length() > ans.length() ? res : ans;
+                ans = res1.length() > ans.length() ? res1 : ans;
+            }
+            return ans;
+        }
+
+        private String palindrome(String s, int left, int right) {
+            char[] charArray = s.toCharArray();
+            while (left >= 0 && right < charArray.length && charArray[left] == charArray[right]) {
+                left--;
+                right++;
+            }
+            return s.substring(left+1, right);
+        }
     }
 
 }
