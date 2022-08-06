@@ -37,32 +37,35 @@ package DifferenceArray_差分数组;
 public class _1109_航班预订统计 {
     // 差分数组
     // https://zhuanlan.zhihu.com/p/301509170
-    private int[] diff;
-    public int[] corpFlightBookings(int[][] bookings, int n) {
-        diff = new int[n];
-        for (int i = 0; i < bookings.length; i++) {
-            int[] item = bookings[i];
-            int begin = item[0] - 1;
-            int end = item[1] - 1;
-            int value = item[2];
-            increment(begin,end,value);
+
+    class Solution {
+        int[] diffArray;
+        public int[] corpFlightBookings(int[][] bookings, int n) {
+            diffArray = new int[n];
+            for (int i = 0; i < bookings.length; i++) {
+                int[] item = bookings[i];
+                increment(item[0], item[1], item[2]);
+            }
+            int[] ans = result();
+            return ans;
         }
-        int[] ans = result();
-        return ans;
-    }
-    private void increment(int i, int j, int val) {
-        diff[i] += val;
-        if (j + 1 < diff.length) {
-            diff[j + 1] -= val;
+
+        private void increment(int i, int j, int val) {
+            diffArray[i-1] += val;
+            if (j < diffArray.length) {
+                diffArray[j] -= val;
+            }
         }
-    }
-    private int[] result() {
-        int[] ans = new int[diff.length];
-        ans[0] = diff[0];
-        for (int i =1; i < diff.length; i++) {
-            ans[i] = ans[i - 1] + diff[i];
+
+        private int[] result() {
+            int[] ans = new int[diffArray.length];
+            ans[0] = diffArray[0];
+            for (int i = 1; i < diffArray.length; i++) {
+                ans[i] = ans[ i - 1] + diffArray[i];
+            }
+            return ans;
         }
-        return ans;
+
     }
 
 }
