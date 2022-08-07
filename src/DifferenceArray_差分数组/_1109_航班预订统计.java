@@ -34,6 +34,8 @@ package DifferenceArray_差分数组;
 //        链接：https://leetcode.cn/problems/corporate-flight-bookings
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
+import java.util.HashMap;
+
 public class _1109_航班预订统计 {
     // 差分数组
     // https://zhuanlan.zhihu.com/p/301509170
