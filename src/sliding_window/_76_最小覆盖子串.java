@@ -1,6 +1,57 @@
 package sliding_window;
+import java.util.*;
 
 public class _76_最小覆盖子串 {
+
+    class Solution {
+        public String minWindow(String s, String t) {
+            HashMap<Character,Integer> needMap = new HashMap<>();
+            HashMap<Character,Integer> windowMap = new HashMap<>();
+            char[] tArray = t.toCharArray();
+            char[] sArray = s.toCharArray();
+            for (char item : tArray) {
+                needMap.put(item, needMap.getOrDefault(item, 0) + 1);
+            }
+
+            int left = 0, right = 0, length = Integer.MAX_VALUE, start = 0;
+            int vaild = 0;
+            while (right < sArray.length) {
+                char rightItem = sArray[right];
+                right++;
+                if (needMap.containsKey(rightItem)) {
+                    windowMap.put(rightItem, windowMap.getOrDefault(rightItem, 0) + 1);
+                    if (windowMap.get(rightItem).equals(needMap.get(rightItem))) {
+                        vaild++;
+                    }
+                }
+
+                while (vaild == needMap.size()) {
+                    if (right - left < length) {
+                        start = left;
+                        length = right - left;
+                    }
+                    char leftItem = sArray[left];
+                    left++;
+                    if (needMap.containsKey(leftItem)) {
+                        int windowValue = windowMap.get(leftItem);
+                        int needValue = needMap.get(leftItem);
+                        if (windowValue == needValue) {
+                            vaild--;
+                        }
+                        windowMap.put(leftItem, windowValue - 1);
+                    }
+                }
+
+            }
+            if (length == Integer.MAX_VALUE) {
+                return "";
+            } else {
+                return s.substring(start, start + length);
+            }
+
+        }
+    }
+
 
     // 减法思路
     public String minWindow1(String s, String t) {
