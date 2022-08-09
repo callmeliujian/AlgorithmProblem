@@ -35,6 +35,49 @@ import java.util.HashMap;
 import java.util.List;
 
 public class _438_找到字符串中所有字母异位词 {
+    // https://labuladong.github.io/algo/2/20/27/
+    class Solution {
+        public List<Integer> findAnagrams(String s, String p) {
+            List<Integer> ans = new ArrayList<>();
+            HashMap<Character, Integer> needMap = new HashMap<>();
+            HashMap<Character, Integer> windowMap = new HashMap<>();
+            char[] pArray = p.toCharArray();
+            char[] sArray = s.toCharArray();
+            for (char item : pArray) {
+                needMap.put(item, needMap.getOrDefault(item, 0) + 1);
+            }
+
+            int left = 0, right = 0, vaild = 0;
+            while (right < sArray.length) {
+                char rightItem = sArray[right];
+                right++;
+                if (needMap.containsKey(rightItem)) {
+                    windowMap.put(rightItem, windowMap.getOrDefault(rightItem, 0) + 1);
+                    if (windowMap.get(rightItem).equals(needMap.get(rightItem))) {
+                        vaild++;
+                    }
+                }
+
+                while (vaild == needMap.size()) {
+                    if ((right - left) == pArray.length) {
+                        ans.add(left);
+                    }
+                    char leftItem = sArray[left];
+                    left++;
+                    if (needMap.containsKey(leftItem)) {
+                        int needMapValue = needMap.get(leftItem);
+                        int windowMapValue = windowMap.get(leftItem);
+                        if (windowMapValue == needMapValue) {
+                            vaild--;
+                        }
+                        windowMap.put(leftItem, windowMapValue - 1);
+                    }
+                }
+
+            }
+            return ans;
+        }
+    }
 
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> res = new ArrayList<>();
