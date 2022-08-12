@@ -4,6 +4,29 @@ import java.util.HashMap;
 
 public class _3_无重复字符的最长子串 {
 
+    // https://labuladong.github.io/algo/2/20/27/
+    class Solution {
+        public int lengthOfLongestSubstring(String s) {
+            char[] sArray = s.toCharArray();
+            int ans = 0;
+            HashMap<Character, Integer> windowMap = new HashMap<>();
+            int left = 0, right = 0;
+            while (right < sArray.length) {
+                char rightItem = sArray[right];
+                right++;
+                windowMap.put(rightItem, windowMap.getOrDefault(rightItem, 0) + 1);
+                while (windowMap.get(rightItem) > 1) {
+                    char leftItem = sArray[left];
+                    left++;
+                    windowMap.put(leftItem, windowMap.get(leftItem)-1);
+                }
+                ans = Math.max(ans, right - left);
+            }
+            return ans;
+        }
+    }
+
+
     public int lengthOfLongestSubstring(String s) {
         int max_len = 0;
         char[] charArray = s.toCharArray();

@@ -10,9 +10,69 @@ public class _0_1_背包问题 {
         int[] value = {15, 20, 30};
         // 背包大小
         int bagsize = 4;
-        testweightbagproblem1(weight, value, bagsize);
+        testweightbagproblem5(weight, value, bagsize);
     }
+
+    public static void testweightbagproblem5(int[] weight, int[] value, int bagsize){
+        int length = weight.length;
+        // dp[i][j] 第 i 件物品放入容量为 j 的背包中，最大值是多少
+        int[] dp = new int[bagsize + 1];
+        // 递推公式 dp[i][j] = max(dp[i-1][j](不要第i个物品的最大价值),dp[i-1][j-weight[i]]+value[i](要第i个物品的最大价值))
+        // 根据递推公式可知，i 通过 i - 1推出，所以 i = 0 的时候需要预先处理好
+//        for (int j = weight[0]; j <= bagsize; j++) {
+//            dp[j] = value[0];
+//        }
+        for (int i = 0; i < length; i++) {
+            for (int j = bagsize; j >= weight[i];j--) { // 遍历背包，必须倒叙，不然dp[0] 会多次添加
+                //if (j >= weight[i]) {
+                int value1 = dp[j];
+                int value2 = dp[j-weight[i]] + value[i];
+                    dp[j] = Math.max(value1,value2);
+                //}
+            }
+
+            for (int j = 0; j <= bagsize; j++) {
+                System.out.print(dp[j]);
+                System.out.print(",");
+            }
+            System.out.println("");
+        }
+
+        }
+
+
     // 通过二维数组求解
+
+    public static void testweightbagproblem3(int[] weight, int[] value, int bagsize){
+        int length = weight.length;
+        // dp[i][j] 第 i 件物品放入容量为 j 的背包中，最大值是多少
+        int[][] dp = new int[length][bagsize + 1];
+        // 当背包大小为 0 的时候，其总价值为 0
+        for (int i = 0; i < length; i++) {
+            dp[i][0] = 0;
+        }
+        // 递推公式 dp[i][j] = max(dp[i-1][j](不要第i个物品的最大价值),dp[i-1][j-weight[i]]+value[i](要第i个物品的最大价值))
+        // 根据递推公式可知，i 通过 i - 1推出，所以 i = 0 的时候需要预先处理好
+        for (int j = weight[0]; j <= bagsize; j++) {
+            dp[0][j] = value[0];
+        }
+        for (int i = 1; i < length; i++) {
+            for (int j = 1; j <= bagsize; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if (j >= weight[i]) {
+                    dp[i][j] = Math.max(dp[i-1][j],dp[i-1][j-weight[i]] + value[i]);
+                }
+            }
+        }
+        for (int i = 0; i < length; i ++) {
+            for (int j = 0; j <= bagsize; j++) {
+                System.out.print(dp[i][j]);
+                System.out.print(",");
+            }
+            System.out.println("");
+        }
+    }
+
     public static void testweightbagproblem(int[] weight, int[] value, int bagsize){
         int length = weight.length;
         // dp[i][j] 表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少。
