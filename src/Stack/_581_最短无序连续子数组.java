@@ -1,7 +1,4 @@
-package 栈;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
+package Stack;
 
 public class _581_最短无序连续子数组 {
 

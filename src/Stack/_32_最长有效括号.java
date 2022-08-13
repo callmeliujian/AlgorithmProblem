@@ -1,4 +1,4 @@
-package 栈;
+package Stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
