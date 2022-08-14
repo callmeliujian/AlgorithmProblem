@@ -1,4 +1,5 @@
 package KMP;
+import java.util.*;
 
 //实现 strStr() 函数。
 //
@@ -66,6 +67,96 @@ public class _28_实现_strStr {
             return next;
         }
 
+    }
+
+    // 减1 版本
+    class Solution1 {
+        public int strStr(String haystack, String needle) {
+            if (needle == null && needle.length() == 0) return 0;
+
+            char[] haystackArray = haystack.toCharArray();
+            char[] needleArray = needle.toCharArray();
+            int[] next = getNext(needle);
+            int j = -1;
+            for (int i = 0; i < haystackArray.length; i++) {
+                while (j >= 0 && haystackArray[i] != needleArray[j + 1]) {
+                    j = next[j];
+                }
+                if (haystackArray[i] == needleArray[j+1]) {
+                    j++;
+                }
+                if (j == needleArray.length - 1) {
+                    return i - needleArray.length + 1;
+                }
+            }
+
+            return - 1;
+        }
+
+        private int[] getNext(String needle) {
+            char[] needleArray = needle.toCharArray();
+            int[] next = new int[needleArray.length];
+            int j = -1;
+            next[0] = j;
+            for (int i = 1; i < needleArray.length; i++) {
+                while (j >= 0 && needleArray[j+1] != needleArray[i]) {
+                    j = next[j];
+                }
+                if (needleArray[j+1] == needleArray[i]) {
+                    j++;
+                }
+                next[i] = j;
+            }
+            return next;
+        }
+
+    }
+
+    // 滑动窗口版本
+    class Solution3 {
+        public int strStr(String haystack, String needle) {
+            HashMap<Character, Integer> needMap = new HashMap<>();
+            HashMap<Character, Integer> windowMap = new HashMap<>();
+            char[] needleArray = needle.toCharArray();
+            char[] haystackArray = haystack.toCharArray();
+            for (char item : needleArray) {
+                needMap.put(item, needMap.getOrDefault(item, 0) + 1);
+            }
+
+            int left = 0, right = 0, vaild = 0;
+            while (right < haystackArray.length) {
+                char rightItem = haystackArray[right];
+                right++;
+                if (needMap.containsKey(rightItem)) {
+                    windowMap.put(rightItem, windowMap.getOrDefault(rightItem, 0) + 1);
+                    if (needMap.get(rightItem).equals(windowMap.get(rightItem))) {
+                        vaild++;
+                    }
+                }
+                while (vaild == needMap.size()) {
+                    if (right - left == needleArray.length) {
+                        String temp = haystack.substring(left, right);
+                        if (temp.equals(needle)) {
+                            return left;
+                        }
+
+                    }
+
+                    char leftItem = haystackArray[left];
+                    left++;
+                    if (needMap.containsKey(leftItem)) {
+                        int windowMapValue = windowMap.get(leftItem);
+                        int needMapValue = needMap.get(leftItem);
+                        if (windowMapValue == needMapValue) {
+                            vaild--;
+                        }
+                        windowMap.put(leftItem, windowMap.get(leftItem) - 1);
+                    }
+                }
+
+            }
+            return -1;
+        }
     }
 
 }
