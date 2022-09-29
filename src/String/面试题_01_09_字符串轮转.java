@@ -15,6 +15,12 @@ package String;
 
 public class 面试题_01_09_字符串轮转 {
 
+    // 精简写法 https://leetcode.cn/problems/string-rotation-lcci/solution/zi-fu-chuan-lun-zhuan-by-leetcode-soluti-kc8z/
+//    public boolean isFlipedString(String s1, String s2) {
+//        return s1.length() == s2.length() && (s1 + s1).contains(s2);
+//    }
+}
+
     public boolean isFlipedString(String s1, String s2) {
         if (s1 == null || s2 == null)
             return false;
