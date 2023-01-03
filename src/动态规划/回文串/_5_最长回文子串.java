@@ -49,7 +49,7 @@ public class _5_最长回文子串 {
     }
 
     // 双指针
-    // https://labuladong.github.io/algo/2/20/23/
+    // https://labuladong.gitee.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/shuang-zhi-fa4bd/
     class Solution {
         public String longestPalindrome(String s) {
             String ans = "";
