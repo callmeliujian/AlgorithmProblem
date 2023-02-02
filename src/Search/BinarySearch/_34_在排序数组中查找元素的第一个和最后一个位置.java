@@ -25,6 +25,55 @@ package Search.BinarySearch;
 //        链接：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int leftIndex = leftIndex(nums, target);
+        int rightIndex = rightIndex(nums, target);
+        return new int[]{leftIndex, rightIndex};
+    }
+
+    private int leftIndex(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        //[left, right]
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] == target) {
+                right = mid - 1;
+            }
+        }
+        if (left == nums.length) {
+            return -1;
+        } else {
+            return nums[left] == target ? left : -1;
+        }
+    }
+
+    private int rightIndex(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid -1;
+            } else if (nums[mid] == target) {
+                left = mid + 1;
+            }
+        }
+        if (left - 1 < 0) {
+            return -1;
+        } else {
+            return nums[left - 1] == target ? left - 1 : -1;
+        }
+    }
+
+}
+
+
 public class _34_在排序数组中查找元素的第一个和最后一个位置 {
 
     // https://labuladong.github.io/algo/2/20/29/
