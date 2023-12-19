@@ -1,4 +1,6 @@
 package 动态规划;
+import sliding_window._3_无重复字符的最长子串;
+
 import java.util.*;
 
 //给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
@@ -35,6 +37,8 @@ public class _300_最长递增子序列 {
         Arrays.fill(dp,1);
         for (int i = 1; i < nums.length; i++) {
             for (int j = 0; j < i;j++) {
+                int a = nums[i];
+                int b = nums[j];
                 if (nums[i] > nums[j]) {
                     // 位置i的最长升序子序列等于j从0到i-1各个位置的最长升序子序列 + 1 的最大值。所以：if (nums[i] > nums[j]) dp[i] = max(dp[i], dp[j] + 1);
                     dp[i] = Math.max(dp[i],dp[j]+1);
@@ -45,6 +49,13 @@ public class _300_最长递增子序列 {
             }
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        _300_最长递增子序列 ob = new _300_最长递增子序列();
+        int[] array = new int[]{10,9,2,5,3,7,101,18};
+        int length = ob.lengthOfLIS(array);
+        System.out.println(length);
     }
 
 }
